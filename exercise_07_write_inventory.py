@@ -28,4 +28,14 @@ def write_inventory(filename, inventory):
         # iron:7
         # wood:10
     """
-    pass  # Reemplazar con tu implementación
+    try:
+        file = open(filename, "w")
+        try:
+            keys = list(inventory.keys())
+            keys.sort()
+            for key in keys:
+                file.write(str(key) + ":" + str(inventory[key]) + "\n")
+        finally:
+            file.close()
+    except OSError:
+        raise

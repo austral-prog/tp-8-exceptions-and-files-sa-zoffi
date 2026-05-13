@@ -25,4 +25,18 @@ def read_lines(filename):
         # archivo contiene: "manzana\n  banana\npera\n"
         read_lines("datos.txt") -> ["manzana", "banana", "pera"]
     """
-    pass  # Reemplazar con tu implementación
+    lines = []
+
+    try:
+        file = open(filename, "r")
+        try:
+            for line in file:
+                clean_line = line.strip()
+                if clean_line != "":
+                    lines.append(clean_line)
+        finally:
+            file.close()
+    except FileNotFoundError:
+        raise
+
+    return lines
